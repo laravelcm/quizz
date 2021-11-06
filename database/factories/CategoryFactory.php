@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Quiz;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CategoryFactory extends Factory
@@ -22,10 +23,10 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> $name = $this->faker->name,
-            'slug'=> $name."-".$name,
-            'is_enabled'=> [true,false][rand(0,1)],
-            'quiz_id'=>rand(1,3),
+            'name' => $this->faker->name(),
+            'slug' => $this->faker->unique()->slug(),
+            'is_enabled' => array_rand([1, 0]),
+            'quiz_id' => $attributes['quiz_id'] ?? Quiz::factory(),
         ];
     }
 }

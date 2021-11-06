@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,9 +23,9 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> $name = $this->faker->name,
-            'slug'=> $name."-".$name,
-            'category_id'=>rand(1,3),
+            'name' => $this->faker->name(),
+            'slug' => $this->faker->unique()->slug(),
+            'category_id' => $attributes['category_id'] ?? Category::factory(),
         ];
     }
 }

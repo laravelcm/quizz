@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Choice;
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ChoiceFactory extends Factory
@@ -22,8 +23,8 @@ class ChoiceFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> $this->faker->name,
-            'question_id'=>rand(1,3),
+            'name' => $this->faker->name(),
+            'question_id'=> $attributes['question_id'] ?? Question::factory(),
         ];
     }
 }

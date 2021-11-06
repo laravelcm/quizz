@@ -22,9 +22,9 @@ class QuizFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> $name = $this->faker->name,
-            'slug'=> $name."-".$name,
-            'is_enabled'=> [true,false][rand(0,1)],
+            'name' => $this->faker->name(),
+            'slug' => $this->faker->unique()->slug(),
+            'is_enabled' => array_rand([1, 0]),
         ];
     }
 }

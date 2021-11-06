@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Item;
 use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,10 +23,10 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> $name = $this->faker->name,
-            'type'=> ['radio','checkbox'][rand(0,1)],
+            'name' => $this->faker->name(),
+            'type' => array_rand(['radio','checkbox']),
             'correct_answers' => "{}",
-            'item_id'=>rand(1,3),
+            'item_id' => $attributes['item_id'] ?? Item::factory(),
         ];
     }
 }
