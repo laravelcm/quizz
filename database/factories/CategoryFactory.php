@@ -1,0 +1,32 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Category;
+use App\Models\Quiz;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class CategoryFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Category::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->name(),
+            'slug' => $this->faker->unique()->slug(),
+            'is_enabled' => array_rand([1, 0]),
+            'quiz_id' => $attributes['quiz_id'] ?? Quiz::factory(),
+        ];
+    }
+}
