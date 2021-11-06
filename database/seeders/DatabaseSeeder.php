@@ -1,12 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\Category;
-use App\Models\Choice;
-use App\Models\Item;
-use App\Models\Question;
-use App\Models\Quiz;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
